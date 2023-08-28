@@ -6,10 +6,10 @@ $(function () {
         },
         submitSuccess: function ($form, event) {
             event.preventDefault();
-            var name = $("input#name").val();
-            var email = $("input#email").val();
-            var subject = $("input#subject").val();
-            var message = $("textarea#message").val();
+            var nombre = $("input#nombre").val();
+            var correo = $("input#correo").val();
+            var asunto = $("input#asunto").val();
+            var descripcion = $("textarea#descripcion").val();
 
             $this = $("#sendMessageButton");
             $this.prop("disabled", true);
@@ -18,10 +18,10 @@ $(function () {
                 url: "contact.php",
                 type: "POST",
                 data: {
-                    name: name,
-                    email: email,
-                    subject: subject,
-                    message: message
+                    nombre: nombre,
+                    correo: correo,
+                    asunto: asunto,
+                    descripcion: descripcion
                 },
                 cache: false,
                 success: function () {
@@ -38,7 +38,7 @@ $(function () {
                     $('#success').html("<div class='alert alert-danger'>");
                     $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
                             .append("</button>");
-                    $('#success > .alert-danger').append($("<strong>").text("Sorry " + name + ", it seems that our mail server is not responding. Please try again later!"));
+                    $('#success > .alert-danger').append($("<strong>").text("Lo siento " + nombre + ", parece que nuestro servidor de correo no responde. ¡Por favor, inténtelo de nuevo más tarde!"));
                     $('#success > .alert-danger').append('</div>');
                     $('#contactForm').trigger("reset");
                 },
@@ -60,6 +60,6 @@ $(function () {
     });
 });
 
-$('#name').focus(function () {
+$('#nombre').focus(function () {
     $('#success').html('');
 });
